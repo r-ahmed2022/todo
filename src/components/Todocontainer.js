@@ -1,25 +1,24 @@
-import React from "react";
+import React from 'react';
+
 export default function Todocontainer(props) {
   const [initialstate, setInitialState] = React.useState({
-    content: "",
+    content: '',
   });
   const handleChange = (event) => {
-    setInitialState((prev) => {
-      return { ...prev, content: event.target.value };
-    });
+    setInitialState((prev) => ({ ...prev, content: event.target.value }));
   };
 
-  
- const handleSubmit = (event) => {
-     event.preventDefault();
-     const todo= {
-        id: Math.random(),
-        content: initialstate.content,
-     }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const todo = {
+      id: Math.random(),
+      content: initialstate.content,
+    };
 
-     props.addToDo(todo);
-       setInitialState({content: ''})
-  }
+    // eslint-disable-next-line react/prop-types, react/destructuring-assignment
+    props.addToDo(todo);
+    setInitialState({ content: '' });
+  };
 
   return (
     <main className="todo-main">
@@ -33,7 +32,7 @@ export default function Todocontainer(props) {
             value={initialstate.content}
             onChange={handleChange}
           />
-          <button type="submit"  className="submit-btn"><i className="material-icons"><i className="material-icons">add_circle</i></i></button>
+          <button type="submit" className="submit-btn"><i className="material-icons"><i className="material-icons">add_circle</i></i></button>
         </div>
       </form>
     </main>
